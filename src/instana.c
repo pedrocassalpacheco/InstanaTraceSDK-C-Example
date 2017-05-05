@@ -18,8 +18,12 @@ uint64_t elapse_time()
 {
   struct timeb now;
   ftime(&now);
-  uint64_t elapse = now.millitm - start.millitm;
+  uint64_t elapse = (1000*(now.time - start.time)) + (now.millitm - start.millitm);
+printf("\nNow:%d:%d", now.time, now.millitm);
+printf("\nNow:%d:%d", start.time, start.millitm);
+
 printf("\n************Elapsed time:%ld", elapse);
+printf("\n \n \n");
   start = now;
   return elapse;
 }
